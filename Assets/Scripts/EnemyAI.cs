@@ -52,14 +52,6 @@ public class EnemyAI : MonoBehaviour
         }
 
 
-        Debug.Log("Attack: " + colorStateArr[(int)states.attack]);
-        Debug.Log("Follow: " + colorStateArr[(int)states.follow]);
-        Debug.Log("Idle: " + colorStateArr[(int)states.idle]);
-
-        Debug.Log("Current color: " + bodyRenderer.material.color);
-        Debug.Log("Current state: " + state);
-
-
         if ((state == states.attack) && (bodyRenderer.material.color != colorStateArr[(int)states.attack]))
         {
             bodyRenderer.material.color = colorStateArr[(int)states.attack];

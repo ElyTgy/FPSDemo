@@ -100,7 +100,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b736656976c9a743868ba4256aef7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetFollowDist: 6.64
+  targetStopDist: 3.2
+  colorStateArr:
+  - {r: 1, g: 1, b: 1, a: 0}
+  - {r: 1, g: 0.89904594, b: 0, a: 0}
+  - {r: 1, g: 0, b: 0, a: 0}
   targetTransform: {fileID: 0}
+  bodyRenderer: {fileID: 7879231014434104809}
+  followGizmosColor: {r: 1, g: 0, b: 0, a: 1}
+  stopGizmosColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!1 &7879231014434104791
 GameObject:
   m_ObjectHideFlags: 0
