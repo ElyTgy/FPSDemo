@@ -64,7 +64,6 @@ public class EnemyAI : MonoBehaviour
         {
             bodyRenderer.material.color = colorStateArr[(int)states.attack];
         }
-        //we can remove || state == states.idle because theres no need to change color again, since we have already gone through the follow state and have a white color
         else if ((state == states.follow) && (bodyRenderer.material.color != colorStateArr[(int)states.follow]))
         {
             bodyRenderer.material.color = colorStateArr[(int)states.follow];
