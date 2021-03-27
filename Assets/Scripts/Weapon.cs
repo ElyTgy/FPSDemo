@@ -6,13 +6,14 @@ public class Weapon : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    [SerializeField] private ParticleSystem muzzleEffect;
     [SerializeField] private Camera firstPersonCamera;
     [SerializeField] private float maxRayDist = 200.0f;
     [SerializeField] private float weaponDamage = 10.0f;
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,9 +21,8 @@ public class Weapon : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            muzzleEffect.Play();
             Shoot();
-            //show effects
-            
         }
     }
 
@@ -32,11 +32,14 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(firstPersonCamera.transform.position, firstPersonCamera.transform.forward, out raycastHit, maxRayDist))
         {
             Debug.Log("Hit something");
-            EnemyHealth hitEnemyHealth = raycastHit.transform.GetComponent<EnemyHealth>();
-            if (hitEnemyHealth != null)
+            Enemy enemy = raycastHit.transform.GetComponent<Enemy>();
+            
+            if (enemy != null)
             {
                 Debug.Log("hit enemy");
-                hitEnemyHealth.TakeDamage(weaponDamage);
+                enemy.enemyHealth.TakeDamage(weaponDamage);
+                enemy.enemyAi.setProvoked = true;
+
             }
         }
     }

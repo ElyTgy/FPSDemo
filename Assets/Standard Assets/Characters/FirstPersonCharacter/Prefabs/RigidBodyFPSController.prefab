@@ -313,8 +313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af6ab6449dd8d8419ee3b6c9f4bccc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  muzzleEffect: {fileID: 4172951146470616902}
   firstPersonCamera: {fileID: 2000000}
   maxRayDist: 200
+  weaponDamage: 10
 --- !u!1 &6880855227423192070
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,5 +425,10 @@ GameObject:
 --- !u!4 &6441192386496728708 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2337074158996965286, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+  m_PrefabInstance: {fileID: 8722701486688356642}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4172951146470616902 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4675877967562565220, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
   m_PrefabInstance: {fileID: 8722701486688356642}
   m_PrefabAsset: {fileID: 0}

@@ -1591,6 +1591,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1164130152893326405, guid: 158e2c7eea4f6b04d87130c1ec59fc40, type: 3}
+      propertyPath: isProvoked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164130152893326405, guid: 158e2c7eea4f6b04d87130c1ec59fc40, type: 3}
+      propertyPath: setProvoked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164130152893326405, guid: 158e2c7eea4f6b04d87130c1ec59fc40, type: 3}
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 1622144281}
@@ -1604,11 +1612,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571712882236603622, guid: 158e2c7eea4f6b04d87130c1ec59fc40, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.0872555
+      value: -13.08726
       objectReference: {fileID: 0}
     - target: {fileID: 4571712882236603622, guid: 158e2c7eea4f6b04d87130c1ec59fc40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000009536743
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 4571712882236603622, guid: 158e2c7eea4f6b04d87130c1ec59fc40, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1642,7 +1650,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4731547126306667143, guid: 158e2c7eea4f6b04d87130c1ec59fc40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.388
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7879231014434104789, guid: 158e2c7eea4f6b04d87130c1ec59fc40, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 158e2c7eea4f6b04d87130c1ec59fc40, type: 3}
 --- !u!1 &1130375402 stripped
 GameObject:
@@ -2442,6 +2455,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625147499}
   m_CullTransparentMesh: 1
+--- !u!1 &1687419378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1687419379}
+  m_Layer: 0
+  m_Name: HitEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1687419379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687419378}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.883467, y: 2.02932, z: 1.07272}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1807351277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2555,7 +2598,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1032d41f900276c40a9dd24f55b7d420, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
