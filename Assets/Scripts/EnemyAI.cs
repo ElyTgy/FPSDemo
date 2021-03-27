@@ -7,7 +7,8 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //after is provoked is turned off, add to the si
+
     private enum states { idle, follow, attack };
     [SerializeField] public Color[] colorStateArr = new Color[3];
     
@@ -15,11 +16,21 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Transform targetTransform;
     [SerializeField]private MeshRenderer bodyRenderer;
 
+    ///distance where the enemy is triggered to follow player
     [SerializeField] private float targetFollowDist = 10.0f;
+    ///distance where the enemy stops following the player
     [SerializeField] private float targetStopDist = 1.0f;
+    ///The amount that is added to players and enemys current distance in order to form a 'provoked radius'(for when the enemy is shot)
     [SerializeField] private float provokedAddDist = 10.0f;
+    ///The maximum radius for provoked
     [SerializeField] private float maxProvokedStopDist = 100.0f;
+    ///The amount that is added to follow radius after isProvoked is turned off(simulate cautionuess)
+    [SerializeField] private float targetFollowDistAdd = 10.0f;
+    ///The duration during which follow radius is longer
+    [SerializeField] private float timeToRemainCautious = 10.0f;
+    ///current radius of provoked 
     private float provokedStopDist = 0.0f;
+
 
     [SerializeField] private Color followGizmosColor = Color.red;
     [SerializeField] private Color stopGizmosColor = Color.blue;
@@ -27,7 +38,9 @@ public class EnemyAI : MonoBehaviour
 
     private float distToTarget;
     private states currState = states.idle;
+    //Is set true the first frame the enemy is provoked
     public bool setProvoked = false;
+    //remains true unitl the player exits the 'provoked radius'
     public bool isProvoked = false;
 
     void Start()
@@ -43,7 +56,7 @@ public class EnemyAI : MonoBehaviour
         distToTarget = Vector3.Distance(transform.position, targetTransform.position);
 
         currState = GetCurrentState();
-        HandleIsProvoked();
+        HandleIsProvokedExit();
         PerformActionForState(currState);
         SetColorForCurrentState();
     }
@@ -95,14 +108,32 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void HandleIsProvoked()
+    private void SetFollowRadiusToNormal()
+    {
+        targetFollowDist -= targetFollowDistAdd;
+    }
+
+    private void StopProvokedMode()
+    {
+        currState = states.idle;
+        isProvoked = false;
+    }
+
+    private void BeCautious()
+    {
+
+        targetFollowDist += targetFollowDistAdd;
+        Invoke("SetFollowRadiusToNormal", timeToRemainCautious);
+    }
+
+    private void HandleIsProvokedExit()
     {
         if(isProvoked)
         {
             if (distToTarget >= provokedStopDist)
             {
-                currState = states.idle;
-                isProvoked = false;
+                StopProvokedMode();
+                BeCautious();
             }
         }
     }

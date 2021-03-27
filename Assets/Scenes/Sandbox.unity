@@ -1602,6 +1602,10 @@ PrefabInstance:
       propertyPath: targetTransform
       value: 
       objectReference: {fileID: 1622144281}
+    - target: {fileID: 1164130152893326405, guid: 158e2c7eea4f6b04d87130c1ec59fc40, type: 3}
+      propertyPath: maxProvokedStopDist
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2186515663653613046, guid: 158e2c7eea4f6b04d87130c1ec59fc40, type: 3}
       propertyPath: m_Name
       value: Enemy
