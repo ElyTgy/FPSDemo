@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] private Camera firstPersonCamera;
     [SerializeField] private float maxRayDist = 200.0f;
+    [SerializeField] private float weaponDamage = 10.0f;
 
     void Start()
     {
@@ -19,14 +20,24 @@ public class Weapon : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            RaycastHit raycastHit;
-            Physics.Raycast(firstPersonCamera.transform.position, firstPersonCamera.transform.forward, out raycastHit, maxRayDist);
-            Debug.Log("Hit ");
+            Shoot();
+            //show effects
+            
         }
     }
 
-    private void OnDrawGizmos()
+    private void Shoot()
     {
-        Gizmos.DrawRay(firstPersonCamera.transform.position, firstPersonCamera.transform.forward);
+        RaycastHit raycastHit;
+        if (Physics.Raycast(firstPersonCamera.transform.position, firstPersonCamera.transform.forward, out raycastHit, maxRayDist))
+        {
+            Debug.Log("Hit something");
+            EnemyHealth hitEnemyHealth = raycastHit.transform.GetComponent<EnemyHealth>();
+            if (hitEnemyHealth != null)
+            {
+                Debug.Log("hit enemy");
+                hitEnemyHealth.TakeDamage(weaponDamage);
+            }
+        }
     }
 }

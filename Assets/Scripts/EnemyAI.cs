@@ -14,7 +14,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] public Color[] colorStateArr = new Color[3];
 
     private float distToTarget;
-    private states state = states.idle;
+    private states currState = states.idle;
 
     private NavMeshAgent navMesh;
     [SerializeField] private Transform targetTransform;
@@ -33,37 +33,75 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currState = GetCurrentState();
+        PerformActionForState(currState);
+        SetColorForCurrentState();
+    }
+
+    private states GetCurrentState()
+    {
         distToTarget = Vector3.Distance(transform.position, targetTransform.position);
 
         if (distToTarget < targetStopDist)
         {
-            state = states.attack;
-            bodyRenderer.material.color = colorStateArr[(int)states.attack];
-            //code for attacking
+            return states.attack;
         }
         else if (distToTarget <= targetFollowDist)
         {
-            state = states.follow;
-            navMesh.SetDestination(targetTransform.position);
+            return states.follow;
         }
         else
         {
-            state = states.idle;
+            return  states.idle;
         }
+    }
 
+    private void PerformActionForState(states state)
+    {
+        if (state == states.attack)
+        {
+            Attack();
+        }
+        else if (state == states.follow)
+        {
+            Follow();
+        }
+        else
+        {
+            Idle();
+        }
+    }
 
-        if ((state == states.attack) && (bodyRenderer.material.color != colorStateArr[(int)states.attack]))
+    private void Attack()
+    {
+        //Code for attack
+    }
+
+    private void Follow()
+    {
+        navMesh.SetDestination(targetTransform.position);
+    }
+
+    private void Idle()
+    {
+        //code for idle
+    }
+
+    private void SetColorForCurrentState()
+    {
+
+        if ((currState == states.attack) && (bodyRenderer.material.color != colorStateArr[(int)states.attack]))
         {
             bodyRenderer.material.color = colorStateArr[(int)states.attack];
         }
-        else if ((state == states.follow) && (bodyRenderer.material.color != colorStateArr[(int)states.follow]))
+        else if ((currState == states.follow) && (bodyRenderer.material.color != colorStateArr[(int)states.follow]))
         {
             bodyRenderer.material.color = colorStateArr[(int)states.follow];
         }
-        else if ((state == states.idle) && (bodyRenderer.material.color != colorStateArr[(int)states.idle]))
+        else if ((currState == states.idle) && (bodyRenderer.material.color != colorStateArr[(int)states.idle]))
         {
             bodyRenderer.material.color = colorStateArr[(int)states.idle];
-        }   
+        }
     }
 
     private void OnDrawGizmos()
