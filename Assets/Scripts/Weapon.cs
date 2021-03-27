@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(firstPersonCamera.transform.position, firstPersonCamera.transform.forward, out raycastHit, maxRayDist))
         {
             Debug.Log("Hit something");
-            Enemy enemy = raycastHit.transform.GetComponent<Enemy>();
+            EnemyToPlayer enemy = raycastHit.transform.GetComponent<EnemyToPlayer>();
             
             if (enemy != null)
             {

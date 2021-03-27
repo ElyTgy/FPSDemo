@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6715762761772112833}
   - component: {fileID: 1640862760}
   - component: {fileID: 1233471010296367171}
+  - component: {fileID: 27965872}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -103,17 +104,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b736656976c9a743868ba4256aef7bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetFollowDist: 6.64
-  targetStopDist: 3.2
   colorStateArr:
   - {r: 1, g: 1, b: 1, a: 0}
   - {r: 1, g: 0.89904594, b: 0, a: 0}
   - {r: 1, g: 0, b: 0, a: 0}
-  isProvoked: 0
   targetTransform: {fileID: 0}
   bodyRenderer: {fileID: 7879231014434104809}
+  targetFollowDist: 6.64
+  targetStopDist: 2.3
+  provokedAddDist: 5
+  maxProvokedStopDist: 30
+  targetFollowDistAdd: 5
+  timeToRemainCautious: 10
   followGizmosColor: {r: 1, g: 0, b: 0, a: 1}
   stopGizmosColor: {r: 0, g: 0, b: 1, a: 1}
+  provokeGizmosColor: {r: 0, g: 0, b: 0, a: 1}
+  setProvoked: 0
+  isProvoked: 0
 --- !u!114 &6715762761772112833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +165,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &27965872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2186515663653613046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da384f5682bf39044a1d731d1790bd73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 40
+  playerHealth: {fileID: 0}
 --- !u!1 &7879231014434104791
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +190,6 @@ GameObject:
   - component: {fileID: 7879231014434104815}
   - component: {fileID: 7879231014434104808}
   - component: {fileID: 7879231014434104809}
-  - component: {fileID: 7879231014434104789}
   m_Layer: 0
   m_Name: EnemyBody
   m_TagString: Untagged
@@ -240,14 +260,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!81 &7879231014434104789
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7879231014434104791}
-  m_Enabled: 1
 --- !u!1 &8131831683913876560
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,8 +287,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8131831683913876560}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.001, y: 0.695, z: 0.416}
-  m_LocalScale: {x: 1, y: 0.091962, z: 0.12756668}
+  m_LocalPosition: {x: -0.001, y: 0.695, z: 0.388}
+  m_LocalScale: {x: 1, y: 0.091962, z: 0.1275667}
   m_Children: []
   m_Father: {fileID: 4571712882236603622}
   m_RootOrder: 1

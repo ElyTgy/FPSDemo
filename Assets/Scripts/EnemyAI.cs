@@ -3,18 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-//TODO: enemy currently wont
+//spaghetti code:
+
 
 public class EnemyAI : MonoBehaviour
 {
-    //after is provoked is turned off, add to the si
-
     private enum states { idle, follow, attack };
+    //TODO: remove and change animation states by enums
+    private Dictionary<states, string> dict = new Dictionary<states, string>()
+    {
+        {states.idle, "Idle" },
+        {states.follow, "Follow" },
+        {states.attack, "Attack" }
+    };
+
     [SerializeField] public Color[] colorStateArr = new Color[3];
     
     private NavMeshAgent navMesh;
+    private Animator animator;
     [SerializeField] private Transform targetTransform;
     [SerializeField]private MeshRenderer bodyRenderer;
+
+    [SerializeField] private float turnSpeed = 5.0f;
 
     ///distance where the enemy is triggered to follow player
     [SerializeField] private float targetFollowDist = 10.0f;
@@ -39,15 +49,16 @@ public class EnemyAI : MonoBehaviour
     private float distToTarget;
     private states currState = states.idle;
     //Is set true the first frame the enemy is provoked
-    public bool setProvoked = false;
+    [HideInInspector] public bool setProvoked = false;
     //remains true unitl the player exits the 'provoked radius'
-    public bool isProvoked = false;
+    [HideInInspector]public bool isProvoked = false;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         navMesh = GetComponent<NavMeshAgent>();
-        distToTarget = Vector3.Distance(transform.position, targetTransform.position);
         navMesh.stoppingDistance = targetStopDist;
+        distToTarget = Vector3.Distance(transform.position, targetTransform.position);
     }
 
     // Update is called once per frame
@@ -58,7 +69,6 @@ public class EnemyAI : MonoBehaviour
         currState = GetCurrentState();
         HandleIsProvokedExit();
         PerformActionForState(currState);
-        SetColorForCurrentState();
     }
 
     private states GetCurrentState()
@@ -140,34 +150,31 @@ public class EnemyAI : MonoBehaviour
 
     private void Attack()
     {
-        //Code for attack
+        SetAnimationTo(states.attack);
+        FaceTarget();
     }
 
     private void Follow()
     {
+        SetAnimationTo(states.follow);
         navMesh.SetDestination(targetTransform.position);
     }
 
     private void Idle()
     {
-        //code for idle
+        SetAnimationTo(states.idle);
     }
 
-    private void SetColorForCurrentState()
+    private void SetAnimationTo(states state)
     {
+        animator.SetTrigger(dict[state]);
+    }
 
-        if ((currState == states.attack) && (bodyRenderer.material.color != colorStateArr[(int)states.attack]))
-        {
-            bodyRenderer.material.color = colorStateArr[(int)states.attack];
-        }
-        else if ((currState == states.follow) && (bodyRenderer.material.color != colorStateArr[(int)states.follow]))
-        {
-            bodyRenderer.material.color = colorStateArr[(int)states.follow];
-        }
-        else if ((currState == states.idle) && (bodyRenderer.material.color != colorStateArr[(int)states.idle]))
-        {
-            bodyRenderer.material.color = colorStateArr[(int)states.idle];
-        }
+    private void FaceTarget()
+    {
+        Vector3 direction = (targetTransform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0.0f, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
     }
 
     private void OnDrawGizmos()
