@@ -74,6 +74,8 @@
     <Compile Include="Assets\Scripts\DeathHandler.cs" />
     <Compile Include="Assets\Scripts\Ammo.cs" />
     <Compile Include="Assets\Scripts\WeaponZoom.cs" />
+    <Compile Include="Assets\Scripts\WeaponSwitcher.cs" />
+    <Compile Include="Assets\Scripts\AmmoType.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

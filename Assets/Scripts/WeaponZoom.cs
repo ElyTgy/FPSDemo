@@ -12,18 +12,19 @@ public class WeaponZoom : MonoBehaviour
     [SerializeField] private float normalSensitivity = 3.0f;
 
     [SerializeField] public RigidbodyFirstPersonController FPSPlayer;
+    [SerializeField] private Camera firstPersonCamera;
 
     private void HandleZoom()
     {
         if (Input.GetMouseButtonDown(1) && (Camera.main.fieldOfView != zoomedFOV))
         {
-            Camera.main.fieldOfView = zoomedFOV;
+            firstPersonCamera.fieldOfView = zoomedFOV;
             FPSPlayer.mouseLook.XSensitivity = zoomedSensitivity;
             FPSPlayer.mouseLook.YSensitivity = zoomedSensitivity;
         }
         else if (!Input.GetMouseButton(1) && (Camera.main.fieldOfView == zoomedFOV))
         {
-            Camera.main.fieldOfView = normalFOV;
+            firstPersonCamera.fieldOfView = normalFOV;
             FPSPlayer.mouseLook.YSensitivity = normalSensitivity;
             FPSPlayer.mouseLook.XSensitivity = normalSensitivity;
         }

@@ -345,15 +345,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleEffect: {fileID: 4675877967562565220}
-  FPSPlayer: {fileID: 0}
   firstPersonCamera: {fileID: 0}
-  zoomedFOV: 25
-  normalFOV: 50
-  zoomedSensitivity: 0.5
-  normalSensitivity: 3
-  maxRayDist: 200
-  weaponDamage: 10
+  maxRayDist: 50
+  weaponDamage: 30
   ammoSlot: {fileID: 0}
+  timeBetweenShots: 3.5
 --- !u!1 &2337074158997199752
 GameObject:
   m_ObjectHideFlags: 0
