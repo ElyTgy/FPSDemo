@@ -14,6 +14,11 @@ public class WeaponZoom : MonoBehaviour
     [SerializeField] public RigidbodyFirstPersonController FPSPlayer;
     [SerializeField] private Camera firstPersonCamera;
 
+    private void OnDisable()
+    {
+        firstPersonCamera.fieldOfView = normalFOV;
+    }
+
     private void HandleZoom()
     {
         if (Input.GetMouseButtonDown(1) && (Camera.main.fieldOfView != zoomedFOV))

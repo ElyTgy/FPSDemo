@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] private float maxRayDist = 200.0f;
     [SerializeField] private float weaponDamage = 10.0f;
-    [SerializeField] private Ammo ammoSlot;
+    public Ammo ammoSlot;
     [SerializeField] private float timeBetweenShots = 2.0f;
     [SerializeField] private float timeBetweenWeaponSwitch = 1.0f;
 
