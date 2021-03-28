@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 13600000}
   - component: {fileID: 11400004}
   - component: {fileID: 2004324691}
+  - component: {fileID: 1380534461}
   m_Layer: 0
   m_Name: RigidBodyFPSController
   m_TagString: Untagged
@@ -315,6 +316,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  deathHandler: {fileID: 0}
+--- !u!114 &1380534461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16339de066d7e28498b2e117b785cb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverCanvas: {fileID: 0}
 --- !u!114 &1786988084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +343,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleEffect: {fileID: 4172951146470616902}
+  FPSPlayer: {fileID: 11400004}
   firstPersonCamera: {fileID: 2000000}
+  zoomedFOV: 25
+  normalFOV: 50
+  zoomedSensitivity: 1
+  normalSensitivity: 2
   maxRayDist: 200
   weaponDamage: 10
 --- !u!1 &6880855227423192070

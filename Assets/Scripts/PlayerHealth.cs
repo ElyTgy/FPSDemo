@@ -6,15 +6,11 @@ public class PlayerHealth : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private float health = 100.0f;
+    [SerializeField] private DeathHandler deathHandler; 
 
     void Start()
     {
-                
-    }
-
-    private void Die()
-    {
-        Debug.Log("Player died");
+        deathHandler = GetComponent<DeathHandler>();
     }
 
     public void TakeDamage(float damage)
@@ -22,7 +18,8 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
         if (health <= 0.0f)
         {
-            Die();
+
+            deathHandler.HandleDeath();
         }
     }
 

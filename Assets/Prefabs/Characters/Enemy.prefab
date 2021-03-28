@@ -110,6 +110,7 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0, a: 0}
   targetTransform: {fileID: 0}
   bodyRenderer: {fileID: 7879231014434104809}
+  turnSpeed: 5
   targetFollowDist: 6.64
   targetStopDist: 2.3
   provokedAddDist: 5
