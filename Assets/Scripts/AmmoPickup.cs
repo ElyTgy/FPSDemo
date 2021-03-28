@@ -19,7 +19,6 @@ public class AmmoPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         Debug.Log("Trigger");
         if (other.gameObject.tag == "Player")
         {
