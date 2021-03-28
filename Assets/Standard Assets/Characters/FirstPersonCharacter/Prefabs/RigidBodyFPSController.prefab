@@ -184,6 +184,8 @@ GameObject:
   - component: {fileID: 2004324691}
   - component: {fileID: 1380534461}
   - component: {fileID: 6907768739600190634}
+  - component: {fileID: 1191926689830548416}
+  - component: {fileID: 1380534467}
   m_Layer: 0
   m_Name: RigidBodyFPSController
   m_TagString: Player
@@ -318,7 +320,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  deathHandler: {fileID: 0}
 --- !u!114 &1380534461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +352,34 @@ MonoBehaviour:
     ammoType: 1
   - ammoAmount: 10
     ammoType: 2
+--- !u!114 &1191926689830548416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca574b45e8d59aa4894aab8900548daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashLight: {fileID: 1947712438893351046}
+  minSpotAngle: 10
+--- !u!114 &1380534467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c556f9f3f196444bb085b0086d38044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageImage: {fileID: 0}
+  timeToStayActive: 0.5
 --- !u!114 &7269819002381736528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,9 +474,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2699320837040434350}
   - component: {fileID: 1947712438893351046}
-  - component: {fileID: 304044640}
   m_Layer: 0
-  m_Name: Flaslight
+  m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,21 +557,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &304044640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7733604074901872754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca574b45e8d59aa4894aab8900548daf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashLight: {fileID: 1947712438893351046}
-  timeBetweenReduction: 1
-  minSpotAngle: 10
 --- !u!1001 &1042079906782095621
 PrefabInstance:
   m_ObjectHideFlags: 0

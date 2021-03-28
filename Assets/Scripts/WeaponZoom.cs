@@ -37,7 +37,7 @@ public class WeaponZoom : MonoBehaviour
 
     void Start()
     {
-        
+        firstPersonCamera.fieldOfView = normalFOV;
     }
 
     void Update()
